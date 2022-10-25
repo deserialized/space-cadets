@@ -1,0 +1,5 @@
+clear X;
+while X < 3 do;
+   incr X;
+end;
+clear Y; Y = X * 2 + 2;
