@@ -1,5 +1,11 @@
+// load the variable X into memory;
 clear X;
-while X < 3 do;
+// output a system message prompting the user to input a value to the terminal and assign this input to X;
+output "Please enter your starting value";
+input X;
+// increases the value of X until it is greater than 2;
+while X <= 2 do;
    incr X;
 end;
-clear Y; Y = X * 2 + 2;
+// load Y into memory and calculate the value of Y from X;
+clear Y; Y = X * 2 + 2 ^ 3.5;

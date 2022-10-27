@@ -1,3 +1,4 @@
+import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
@@ -9,7 +10,7 @@ Written by empulsion
 - Executes code based off passed lexical tokens.
 
 CREATED: 24/10/2022
-LAST UPDATED: 25/10/2022
+LAST UPDATED: 26/10/2022
 
 */
 
@@ -47,9 +48,6 @@ public class Executor {
   }
 
   private Integer executeLine(String[] functionData) {
-    // Comments.
-    if (functionData[1].equals("//")) {return -1;}
-
     // Ensures that any 1 word statements, such as end, aren't processed by the calculator or executor.
     if (functionData.length > 2) {
       functionData = performOperations(functionData);
@@ -73,7 +71,7 @@ public class Executor {
       }
 
       if (expression.length == 1) {
-        variableMap.get(functionData[1]).setValue(Float.valueOf(functionData[3]));
+        variableMap.get(functionData[1]).setValue(Double.valueOf(functionData[3]));
       } else {
         Calculator newCalc = new Calculator(expression);
         variableMap.get(functionData[1]).setValue(newCalc.calculate());
@@ -88,6 +86,16 @@ public class Executor {
       case "clear" -> {fetchVariable(varId).clear();}
       case "incr" -> {fetchVariable(varId).incr();}
       case "decr" -> {fetchVariable(varId).decr();}
+      case "input" -> {
+        Scanner inputScanner = new Scanner(System.in);
+        try {
+          fetchVariable(varId).setValue(Double.parseDouble(inputScanner.nextLine()));
+        } catch (Exception ex) {
+          System.out.println("Invalid user input. A value of type double is required.");
+          System.exit(0);
+        }
+      }
+      case "output" -> {System.out.println(varId);}
     }
   }
 
@@ -97,21 +105,29 @@ public class Executor {
 
       switch (functionData[3]) {
         case "not" -> {
-          if (variableMap.get(functionData[2]).getValue().equals(Float.valueOf(functionData[4]))) {endLoop = true;}
+          if (variableMap.get(functionData[2]).getValue().equals(Double.valueOf(functionData[4]))) {endLoop = true;}
         }
         case "=" -> {
-          if (!variableMap.get(functionData[2]).getValue().equals(Float.valueOf(functionData[4]))) {endLoop = true;}
+          if (!variableMap.get(functionData[2]).getValue().equals(Double.valueOf(functionData[4]))) {endLoop = true;}
         }
         case ">" -> {
-          if (variableMap.get(functionData[2]).getValue() <= Float.valueOf(functionData[4])) {endLoop = true;}
+          if (variableMap.get(functionData[2]).getValue() <= Double.parseDouble(functionData[4])) {endLoop = true;}
         }
         case "<" -> {
-          if (variableMap.get(functionData[2]).getValue() >= Float.valueOf(functionData[4])) {endLoop = true;}
+          if (variableMap.get(functionData[2]).getValue() >= Double.parseDouble(functionData[4])) {endLoop = true;}
+        }
+        case ">=" -> {
+          if (variableMap.get(functionData[2]).getValue() < Double.parseDouble(functionData[4])) {endLoop = true;}
+        }
+        case "<=" -> {
+          if (variableMap.get(functionData[2]).getValue() > Double.parseDouble(functionData[4])) {endLoop = true;}
         }
       }
 
       if (endLoop) {
         Integer nestedEnds = 0;
+
+        if (!callstack.isEmpty() && callstack.peek().equals(pointer)) {callstack.pop();}
 
         while (!nestedEnds.equals(-1)) {
           pointer++;
@@ -121,8 +137,6 @@ public class Executor {
             case "end" -> {nestedEnds--;}
           }
         }
-
-        callstack.pop();
       } else {
         if (callstack.empty() || !callstack.peek().equals(pointer)) {
           callstack.push(pointer);

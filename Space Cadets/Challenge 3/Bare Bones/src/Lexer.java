@@ -52,10 +52,17 @@ public class Lexer {
     String[] functionArray = line.split(";");
 
     for (String dataString : functionArray) {
-      dataString = dataString.trim();
-      dataString = "0 " + dataString;
-      String[] functionData = dataString.split(" ");
-      lexicalTokens.add(functionData);
+      if (!dataString.substring(0, 2).equals("//")) {
+        dataString = dataString.trim();
+        String[] functionData;
+        if (dataString.length() >= 6 && dataString.substring(0, 6).equals("output")) {
+          functionData = new String[] {"0", "output", dataString.substring(8, dataString.length()).replace("\"", "")};
+        } else {
+          dataString = "0 " + dataString;
+          functionData = dataString.split(" ");
+        }
+        lexicalTokens.add(functionData);
+      }
     }
   }
 

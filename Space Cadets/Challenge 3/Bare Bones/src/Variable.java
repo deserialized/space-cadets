@@ -10,14 +10,14 @@ LAST UPDATED: 25/10/2022
 */
 
 public class Variable {
-  private Float value;
+  private Double value;
 
   public Variable() {
-    value = Float.valueOf(0);
+    value = Double.valueOf(0);
   }
 
   public void clear() {
-    value = Float.valueOf(0);
+    value = Double.valueOf(0);
   }
 
   public void incr() {
@@ -28,11 +28,11 @@ public class Variable {
     value--;
   }
 
-  public void setValue(Float newVal) {
+  public void setValue(Double newVal) {
     value = newVal;
   }
 
-  public Float getValue() {
+  public Double getValue() {
     return value;
   }
 }

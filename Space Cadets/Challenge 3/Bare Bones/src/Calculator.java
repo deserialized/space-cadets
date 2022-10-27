@@ -3,7 +3,7 @@
 Calculator.java
 Written by empulsion
 - Performs operations based on a passed array of contents.
-- Division -> Multiplication -> Addition -> Subtraction
+- Indices -> Division -> Multiplication -> Addition -> Subtraction
 
 CREATED: 25/10/2022
 LAST UPDATED: 25/10/2022
@@ -17,21 +17,22 @@ public class Calculator {
     expression = toCalculate;
   }
 
-  public Float calculate() {
+  public Double calculate() {
+    findOperation("^");
     findOperation("/");
     findOperation("*");
     findOperation("+");
     findOperation("-");
 
-    return Float.valueOf(expression[0]);
+    return Double.valueOf(expression[0]);
   }
 
   private void findOperation(String operation) {
     for (int i = 0; i < expression.length; i++) {
       if (expression[i].equals(operation)) {
-        Float num1 = Float.valueOf(expression[i - 1]);
-        Float num2 = Float.valueOf(expression[i + 1]);
-        Float result = handleOperation(operation, num1, num2);
+        Double num1 = Double.valueOf(expression[i - 1]);
+        Double num2 = Double.valueOf(expression[i + 1]);
+        Double result = handleOperation(operation, num1, num2);
 
         expression[i + 1] = result.toString();
         String[] newExpression = new String[expression.length - 2];
@@ -51,13 +52,14 @@ public class Calculator {
     }
   }
 
-  private Float handleOperation(String operation, Float num1, Float num2) {
+  private Double handleOperation(String operation, Double num1, Double num2) {
     switch (operation) {
+      case "^" -> {return Math.pow(num1, num2);}
       case "/" -> {return (num1 / num2);}
       case "*" -> {return (num1 * num2);}
       case "+" -> {return (num1 + num2);}
       case "-" -> {return (num1 - num2);}
-      default -> {return Float.valueOf(0);}
+      default -> {return Double.valueOf(0);}
     }
   }
 }
