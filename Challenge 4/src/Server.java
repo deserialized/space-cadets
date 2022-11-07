@@ -9,6 +9,7 @@
 
 */
 
+import java.io.PrintWriter;
 import java.io.IOException;
 
 import java.net.Socket;
@@ -38,7 +39,6 @@ public class Server extends Thread {
         try {
             Socket clientSocket = serverSocket.accept();
             sockets.add(clientSocket);
-            System.out.println("A user has joined the chatroom!\nThere is now " + sockets.size() + " user(s).");
 
             ThreadHandler newThread = new ThreadHandler(clientSocket);
             new Thread(newThread).start();
