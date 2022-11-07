@@ -1,46 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6fcf50f-bf78-49ed-825f-40a01660b43c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Challenge 2/Bare Bones/Bare Bones.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Challenge 2/Challenge 2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Challenge 4.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ThreadHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Space Cadets.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 1/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 2/Bare Bones/Bare Bones.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 2/Bare Bones/out/production/Bare Bones/Interpreter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 2/Bare Bones/src/Interpreter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 2/Bare Bones/toInterpret/test1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 2/Bare Bones/toInterpret/test2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 2/Challenge 2.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/Bare Bones.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/out/production/Bare Bones/Calculator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/out/production/Bare Bones/Executor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/out/production/Bare Bones/Interpreter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/out/production/Bare Bones/Lexer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/out/production/Bare Bones/Variable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/src/Calculator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/src/Executor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/src/Interpreter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/src/Lexer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/src/Variable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/toInterpret/test1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/toInterpret/test2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/toInterpret/test3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Challenge 3.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/out/production/Challenge 3/Calculator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/out/production/Challenge 3/Executor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/out/production/Challenge 3/Interpreter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/out/production/Challenge 3/Lexer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/out/production/Challenge 3/Variable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Space Cadets/Space Cadets.iml" beforeDir="false" />
+    <list default="true" id="d6fcf50f-bf78-49ed-825f-40a01660b43c" name="Changes" comment="uploaded challenge 4">
+      <change beforePath="$PROJECT_DIR$/../Challenge 3" beforeDir="false" afterPath="$PROJECT_DIR$/../Challenge 3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +74,24 @@
       <updated>1667771005158</updated>
       <workItem from="1667771006546" duration="3320000" />
       <workItem from="1667775965390" duration="1015000" />
+      <workItem from="1667811278551" duration="464000" />
+      <workItem from="1667812751441" duration="920000" />
     </task>
+    <task id="LOCAL-00001" summary="uploaded challenge 4">
+      <created>1667811361239</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667811361239</updated>
+    </task>
+    <task id="LOCAL-00002" summary="uploaded challenge 4">
+      <created>1667811623616</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667811623616</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,14 +108,8 @@
       </map>
     </option>
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Server.java</url>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="uploaded challenge 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="uploaded challenge 4" />
   </component>
 </project>
