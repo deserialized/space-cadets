@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d6fcf50f-bf78-49ed-825f-40a01660b43c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Challenge 2/Bare Bones/Bare Bones.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Challenge 2/Challenge 2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Challenge 4.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ThreadHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Space Cadets.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 1/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 2/Bare Bones/Bare Bones.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 2/Bare Bones/out/production/Bare Bones/Interpreter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 2/Bare Bones/src/Interpreter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 2/Bare Bones/toInterpret/test1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 2/Bare Bones/toInterpret/test2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 2/Challenge 2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/Bare Bones.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/out/production/Bare Bones/Calculator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/out/production/Bare Bones/Executor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/out/production/Bare Bones/Interpreter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/out/production/Bare Bones/Lexer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/out/production/Bare Bones/Variable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/src/Calculator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/src/Executor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/src/Interpreter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/src/Lexer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/src/Variable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/toInterpret/test1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/toInterpret/test2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Bare Bones/toInterpret/test3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/Challenge 3.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/out/production/Challenge 3/Calculator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/out/production/Challenge 3/Executor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/out/production/Challenge 3/Interpreter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/out/production/Challenge 3/Lexer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Challenge 3/out/production/Challenge 3/Variable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Cadets/Space Cadets.iml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2HBusUGyad7sPBDFow2Oy0vHu7T" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Multirun.Client &amp; Server">
+    <configuration name="Client" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Client" />
+      <module name="Challenge 4" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Server" />
+      <module name="Challenge 4" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client &amp; Server" type="Multirun" separateTabs="false" reuseTabsWithFailures="false" startOneByOne="true" markFailedProcess="true" hideSuccessProcess="false" delayTime="1.0">
+      <runConfiguration name="Server" type="Application" />
+      <runConfiguration name="Client" type="Application" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Server" />
+      <item itemvalue="Application.Client" />
+      <item itemvalue="Multirun.Client &amp; Server" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d6fcf50f-bf78-49ed-825f-40a01660b43c" name="Changes" comment="" />
+      <created>1667771005158</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1667771005158</updated>
+      <workItem from="1667771006546" duration="3320000" />
+      <workItem from="1667775965390" duration="1015000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Server.java</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
