@@ -22,11 +22,13 @@ import java.util.Map;
 */
 
 public class ThreadHandler extends Thread {
+    private  final AudioHandler audioHandler;
     private final HashMap<String, Label> labelMap;
     private GraphicsContext g;
     private HashMap<String, Integer> variableMap = new HashMap<>();
     private int cycle = 0;
     private final int midpoint;
+    private double amplifier = 2;
     private HashMap<String, Integer> subCycles = new HashMap<>(Map.of(
             "R", 0,
             "r", 0,
@@ -51,6 +53,10 @@ public class ThreadHandler extends Thread {
         this.variableMap.put("R", R);
         this.variableMap.put("r", r);
         this.variableMap.put("O", O);
+        this.audioHandler = new AudioHandler();
+
+        /* Scale up amplifier based on window size */
+        this.amplifier = (midpoint / 300) * amplifier;
     }
 
     /* Creates a new hypocycloid object with current values */
@@ -91,8 +97,20 @@ public class ThreadHandler extends Thread {
         } else if (cycle == 3) {
             handleCycleVariable("R");
             handleCycleVariable("r");
-        } else {
+        } else if (cycle == 4) {
             handleCycleVariable("R");
+            handleCycleVariable("r");
+            handleCycleVariable("O");
+        } else {
+            /* Collects audio data, 0 is quietest */
+            float audioLevel = audioHandler.captureAudio();
+
+            /* Calculate new values */
+            int RValue = (int) Math.floor(config.get("maxR") - (audioLevel * amplifier));
+            //int rValue = (int) Math.floor(config.get("minr") + (audioLevel * amplifier));
+
+            /* Set values */
+            variableMap.replace("R", RValue);
             handleCycleVariable("r");
             handleCycleVariable("O");
         }
@@ -103,7 +121,7 @@ public class ThreadHandler extends Thread {
         labelMap.forEach((varName, label) -> {
             Platform.runLater(() -> {
                 String suffix;
-                if (varName == "Mode") {
+                if (varName.equals("Mode")) {
                     if (cycle == 0) {
                         suffix = "R";
                     } else if (cycle == 1) {
@@ -112,8 +130,10 @@ public class ThreadHandler extends Thread {
                         suffix = "O";
                     } else if (cycle == 3) {
                         suffix = "R, r";
-                    } else {
+                    } else if (cycle == 4) {
                         suffix = "R, r, O";
+                    } else {
+                        suffix = "Audio";
                     }
                 } else {
                     suffix = variableMap.get(varName).toString();
@@ -126,7 +146,7 @@ public class ThreadHandler extends Thread {
     /* Cycle between different variables */
     public void switchVariable() {
         cycle++;
-        if (cycle > 4) {
+        if (cycle > 5) {
             cycle = 0;
         }
     }
