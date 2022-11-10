@@ -6,6 +6,6 @@ module com.example.challenge_5 {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
 
-    opens com.example.challenge_5 to javafx.fxml;
-    exports com.example.challenge_5;
+    opens application to javafx.fxml;
+    exports application;
 }
