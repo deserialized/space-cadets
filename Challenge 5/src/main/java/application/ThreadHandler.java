@@ -164,10 +164,12 @@ public class ThreadHandler extends Thread {
     public void run() {
         while (true) {
             redraw();
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+            if (cycle != 5) {
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
             handleCycle();
             updateLabels();
