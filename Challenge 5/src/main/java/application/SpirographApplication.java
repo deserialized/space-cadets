@@ -13,10 +13,15 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 /*
 
@@ -26,6 +31,15 @@ import javafx.stage.StageStyle;
 
 public class SpirographApplication extends Application {
     private Group root;
+
+    /*
+        Settings
+        NOTE: vertical program, windowY must be higher than windowX
+    */
+    HashMap<String, Integer> config = new HashMap<>(Map.of(
+            "windowX", 900,
+            "windowY", 1000
+    ));
 
     public static void main(String[] args) {
         /* Launches the application */
@@ -45,14 +59,14 @@ public class SpirographApplication extends Application {
 
         /* Generates scene */
         this.root = new Group();
-        Scene scene = new Scene(this.root, 600, 700, Color.BLACK);
+        Scene scene = new Scene(this.root, config.get("windowX"), config.get("windowY"), Color.BLACK);
 
         /* Applies style.css */
-        String css = this.getClass().getResource("style.css").toExternalForm();
+        String css = Objects.requireNonNull(this.getClass().getResource("style.css")).toExternalForm();
         scene.getStylesheets().add(css);
 
         /* Creates interface */
-        Interface userInterface = new Interface();
+        Interface userInterface = new Interface(config.get("windowX"), config.get("windowY"));
 
         /* Creates interface objects */
         Canvas canvas = userInterface.setupCanvas();
@@ -63,6 +77,20 @@ public class SpirographApplication extends Application {
         addToRoot(canvas);
         addToRoot(infoPane);
         addToRoot(cycleButton);
+
+        /* Creates variable labels */
+        Label OLabel = userInterface.setupVarLabel("O", 1);
+        Label rLabel = userInterface.setupVarLabel("r", 2);
+        Label RLabel = userInterface.setupVarLabel("R", 3);
+
+        /* Creates mode label */
+        Label modeLabel = userInterface.setupModeLabel();
+
+        /* Adds labels to root */
+        addToRoot(OLabel);
+        addToRoot(rLabel);
+        addToRoot(RLabel);
+        addToRoot(modeLabel);
 
         /* Initiates graphical spirograph animation */
         userInterface.initiateThread();
@@ -83,5 +111,9 @@ public class SpirographApplication extends Application {
 
     public void addToRoot(Button button) {
         root.getChildren().add(button);
+    }
+
+    public void addToRoot(Label label) {
+        root.getChildren().add(label);
     }
 }

@@ -8,7 +8,12 @@ package application;
 
 */
 
+import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Label;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /*
 
@@ -17,87 +22,111 @@ import javafx.scene.canvas.GraphicsContext;
 */
 
 public class ThreadHandler extends Thread {
+    private final HashMap<String, Label> labelMap;
     private GraphicsContext g;
-    private int R, r, O;
+    private HashMap<String, Integer> variableMap = new HashMap<>();
     private int cycle = 0;
+    private final int midpoint;
+    private HashMap<String, Integer> subCycles = new HashMap<>(Map.of(
+            "R", 0,
+            "r", 0,
+            "O", 0
+    ));
+
+    /* Settings */
+    private final HashMap<String, Integer> config = new HashMap<>(Map.of(
+            "maxR", 150,
+            "minR", 75,
+            "maxr", 300,
+            "minr", 200,
+            "maxO", 25,
+            "minO", 10
+    ));
 
     /* Constructor */
-    public ThreadHandler(GraphicsContext g, int R, int r, int O) {
+    public ThreadHandler(GraphicsContext g, int midpoint, HashMap<String, Label> labelMap, int R, int r, int O) {
         this.g = g;
-        this.R = R;
-        this.r = r;
-        this.O = O;
+        this.midpoint = midpoint;
+        this.labelMap = labelMap;
+        this.variableMap.put("R", R);
+        this.variableMap.put("r", r);
+        this.variableMap.put("O", O);
     }
 
     /* Creates a new hypocycloid object with current values */
     private void redraw() {
-        Hypocycloid newHypocycloid = new Hypocycloid(g, R, r, O);
+        new Hypocycloid(g, midpoint, this.variableMap.get("R"), this.variableMap.get("r"), this.variableMap.get("O"));
     }
 
-    /*
+    /* Performs boundary checks and modifies hypocycloid parameters */
+    private void handleCycleVariable(String varName) {
+        int subCycle = subCycles.get(varName);
+        int value = variableMap.get(varName);
 
-        Performs different boundary and bounce-back functions based on the current cycle status:
-
-        Key: incr/decr - variableName
-            0/1 - R
-            2/3 - r
-            4/5 - O
-
-    */
-    private void handleCycle() {
-        switch (cycle) {
-            case 0 -> {
-                if (R >= 75) {
-                    cycle = 1;
-                } else {
-                    R++;
-                }
+        if (subCycle == 0) {
+            /* Increment function */
+            if (value >= config.get("max" + varName)) {
+                subCycles.replace(varName, 1);
+            } else {
+                variableMap.replace(varName, value + 1);
             }
-            case 1 -> {
-                if (R <= 50) {
-                    cycle = 0;
-                } else {
-                    R--;
-                }
-            }
-            case 2 -> {
-                if (r >= 200) {
-                    cycle = 3;
-                } else {
-                    r++;
-                }
-            }
-            case 3 -> {
-                if (r <= 100) {
-                    cycle = 2;
-                } else {
-                    r--;
-                }
-            }
-            case 4 -> {
-                if (O >= 10) {
-                    cycle = 5;
-                } else {
-                    O++;
-                }
-            }
-            case 5 -> {
-                if (O <= 1) {
-                    cycle = 4;
-                } else {
-                    O--;
-                }
+        } else {
+            /* Decrement function */
+            if (value <= config.get("min" + varName)) {
+                subCycles.replace(varName, 0);
+            } else {
+                variableMap.replace(varName, value - 1);
             }
         }
     }
 
+    /* Determines which value(s) should be manipulated */
+    private void handleCycle() {
+        if (cycle == 0) {
+            handleCycleVariable("R");
+        } else if (cycle == 1) {
+            handleCycleVariable("r");
+        } else if (cycle == 2) {
+            handleCycleVariable("O");
+        } else if (cycle == 3) {
+            handleCycleVariable("R");
+            handleCycleVariable("r");
+        } else {
+            handleCycleVariable("R");
+            handleCycleVariable("r");
+            handleCycleVariable("O");
+        }
+    }
+
+    /* Updates variable labels */
+    private void updateLabels() {
+        labelMap.forEach((varName, label) -> {
+            Platform.runLater(() -> {
+                String suffix;
+                if (varName == "Mode") {
+                    if (cycle == 0) {
+                        suffix = "R";
+                    } else if (cycle == 1) {
+                        suffix = "r";
+                    } else if (cycle == 2) {
+                        suffix = "O";
+                    } else if (cycle == 3) {
+                        suffix = "R, r";
+                    } else {
+                        suffix = "R, r, O";
+                    }
+                } else {
+                    suffix = variableMap.get(varName).toString();
+                }
+                label.setText(varName + ": " + suffix);
+            });
+        });
+    }
+
     /* Cycle between different variables */
     public void switchVariable() {
-        if (cycle == 0 || cycle == 1) {
-            cycle = 2;
-        } else if (cycle == 2 || cycle == 3) {
-            cycle = 4;
-        } else if (cycle == 4 || cycle == 5) {
+        cycle++;
+        if (cycle > 4) {
             cycle = 0;
         }
     }
@@ -108,6 +137,7 @@ public class ThreadHandler extends Thread {
             - Draw new hypocycloid.
             - Small delay.
             - Refresh hypocycloid variables.
+            - Update variable labels.
             - Clear canvas.
 
     */
@@ -120,7 +150,8 @@ public class ThreadHandler extends Thread {
                 throw new RuntimeException(e);
             }
             handleCycle();
-            g.clearRect(0, 0, 600, 600);
+            updateLabels();
+            g.clearRect(0, 0, midpoint * 2, midpoint * 2);
         }
     }
 }

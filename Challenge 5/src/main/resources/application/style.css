@@ -1,7 +1,20 @@
+.label {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+    -fx-font-family: Consolas;
+}
+
 #step {
     -fx-background-color: transparent;
 }
 
 #infoBackground {
-    -fx-background-color: green;
+    -fx-background-color: linear-gradient(to right, green, black);
+}
+
+#modeLabel {
+    -fx-text-fill: green;
+    -fx-font-size: 35px;
 }

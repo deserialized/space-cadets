@@ -33,22 +33,24 @@ public class Hypocycloid {
     private final GraphicsContext g;
 
     /* Constructor */
-    public Hypocycloid(GraphicsContext g, double R, double r, double O) {
+    public Hypocycloid(GraphicsContext g, int midpoint, double R, double r, double O) {
         this.g = g;
         this.R = R;
         this.r = r;
         this.O = O;
-        this.calculatePoints();
+        this.calculatePoints(midpoint);
         this.drawShape();
     }
 
     /* Calculates a list of points to connect */
-    private void calculatePoints() {
+    private void calculatePoints(int midpoint) {
+        /* Upscale the x and y coordinates for larger canvas resolutions */
+        double upscaleFactor = midpoint / 300;
         for (float t = 0; t < maxT; t++) {
-            int x = (int) Math.floor((R - r) * Math.cos(t) + O * Math.cos(((R - r) / r) * t));
-            int y = (int) Math.floor((R - r) * Math.sin(t) - O * Math.sin(((R - r) / r) * t));
-            x+= 300;
-            y+= 300;
+            int x = (int) Math.floor(((R - r) * Math.cos(t) + O * Math.cos(((R - r) / r) * t)) * upscaleFactor);
+            int y = (int) Math.floor(((R - r) * Math.sin(t) - O * Math.sin(((R - r) / r) * t)) * upscaleFactor);
+            x+= midpoint;
+            y+= midpoint;
 
             points.add(new int[]{x, y});
         }
