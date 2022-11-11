@@ -77,8 +77,8 @@ public class AudioHandler {
         double dAvg = sum / data.length;
 
         double sumMeanSquare = 0d;
-        for(int j = 0; j < data.length; j++) {
-            sumMeanSquare = sumMeanSquare + Math.pow(data[j] - dAvg, 2d);
+        for (byte datum : data) {
+            sumMeanSquare = sumMeanSquare + Math.pow(datum - dAvg, 2d);
         }
 
         double averageMeanSquare = sumMeanSquare / data.length;

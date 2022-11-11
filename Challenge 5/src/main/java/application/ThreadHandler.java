@@ -28,7 +28,7 @@ public class ThreadHandler extends Thread {
     private HashMap<String, Integer> variableMap = new HashMap<>();
     private int cycle = 0;
     private final int midpoint;
-    private double amplifier = 2;
+    private double amplifier = 2.5;
     private HashMap<String, Integer> subCycles = new HashMap<>(Map.of(
             "R", 0,
             "r", 0,
@@ -106,7 +106,7 @@ public class ThreadHandler extends Thread {
                 float audioLevel = audioHandler.captureAudio();
 
                 /* Calculate new values */
-                int RValue = (int) Math.floor(config.get("maxR") - (audioLevel * amplifier));
+                int RValue = (int) Math.max(0, Math.floor(config.get("maxR") - (audioLevel * amplifier)));
 
                 /* Set values */
                 variableMap.replace("R", RValue);
