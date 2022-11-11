@@ -30,7 +30,7 @@ import java.util.ArrayList;
 public class Hypocycloid {
     private static final int maxT = 550;
     private final double R, r, O;
-    private ArrayList<int[]> points = new ArrayList<int[]>();
+    private ArrayList<int[]> points = new ArrayList<>();
     private final GraphicsContext g;
 
     /* Constructor */
