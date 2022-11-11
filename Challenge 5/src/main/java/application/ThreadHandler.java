@@ -107,11 +107,9 @@ public class ThreadHandler extends Thread {
 
             /* Calculate new values */
             int RValue = (int) Math.floor(config.get("maxR") - (audioLevel * amplifier));
-            //int rValue = (int) Math.floor(config.get("minr") + (audioLevel * amplifier));
 
             /* Set values */
             variableMap.replace("R", RValue);
-            handleCycleVariable("r");
             handleCycleVariable("O");
         }
     }
