@@ -60,10 +60,11 @@ public class AudioHandler {
                 }
             }
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            return -1;
+            // System.err.println(e.getMessage());
         }
 
-        return -1;
+        // return -1;
     }
 
     /* Formula for this found online: calculates the root-mean-square value for the audio data */

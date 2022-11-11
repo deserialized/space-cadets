@@ -16,6 +16,7 @@ package application;
 
 */
 
+import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ import java.util.ArrayList;
 */
 
 public class Hypocycloid {
-    private static final int maxT = 150;
+    private static final int maxT = 550;
     private final double R, r, O;
     private ArrayList<int[]> points = new ArrayList<int[]>();
     private final GraphicsContext g;
@@ -71,6 +72,8 @@ public class Hypocycloid {
 
     /* Connects a pair of x,y coordinates */
     private void draw(int[] point1, int[] point2) {
-        g.strokeLine(point1[0], point1[1], point2[0], point2[1]);
+        Platform.runLater(() -> {
+            g.strokeLine(point1[0], point1[1], point2[0], point2[1]);
+        });
     }
 }

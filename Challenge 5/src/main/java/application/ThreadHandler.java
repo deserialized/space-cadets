@@ -162,16 +162,24 @@ public class ThreadHandler extends Thread {
     public void run() {
         while (true) {
             redraw();
-            if (cycle != 5) {
-                try {
-                    Thread.sleep(50);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+
+            int sleepTime = 50;
+            if (cycle == 5) {
+                sleepTime = 25;
+            }
+
+            try {
+                Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+
             }
             handleCycle();
             updateLabels();
-            g.clearRect(0, 0, midpoint * 2, midpoint * 2);
+
+            Platform.runLater(() -> {
+                g.clearRect(0, 0, midpoint * 2, midpoint * 2);
+            });
         }
     }
 }
