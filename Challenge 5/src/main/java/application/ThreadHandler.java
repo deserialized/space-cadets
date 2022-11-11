@@ -88,29 +88,30 @@ public class ThreadHandler extends Thread {
 
     /* Determines which value(s) should be manipulated */
     private void handleCycle() {
-        if (cycle == 0) {
-            handleCycleVariable("R");
-        } else if (cycle == 1) {
-            handleCycleVariable("r");
-        } else if (cycle == 2) {
-            handleCycleVariable("O");
-        } else if (cycle == 3) {
-            handleCycleVariable("R");
-            handleCycleVariable("r");
-        } else if (cycle == 4) {
-            handleCycleVariable("R");
-            handleCycleVariable("r");
-            handleCycleVariable("O");
-        } else {
-            /* Collects audio data, 0 is quietest */
-            float audioLevel = audioHandler.captureAudio();
+        switch (cycle) {
+            case 0 -> {handleCycleVariable("R");}
+            case 1 -> {handleCycleVariable("r");}
+            case 2 -> {handleCycleVariable("O");}
+            case 3 -> {
+                handleCycleVariable("R");
+                handleCycleVariable("r");
+            }
+            case 4 -> {
+                handleCycleVariable("R");
+                handleCycleVariable("r");
+                handleCycleVariable("O");
+            }
+            default -> {
+                /* Collects audio data, 0 is quietest */
+                float audioLevel = audioHandler.captureAudio();
 
-            /* Calculate new values */
-            int RValue = (int) Math.floor(config.get("maxR") - (audioLevel * amplifier));
+                /* Calculate new values */
+                int RValue = (int) Math.floor(config.get("maxR") - (audioLevel * amplifier));
 
-            /* Set values */
-            variableMap.replace("R", RValue);
-            handleCycleVariable("O");
+                /* Set values */
+                variableMap.replace("R", RValue);
+                handleCycleVariable("O");
+            }
         }
     }
 
