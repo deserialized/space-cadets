@@ -34,15 +34,18 @@ public class AudioThreadHandler extends Thread {
 
     public void run() {
         /* Buffer for raw audio data */
-        byte[] buffer = new byte[6000];
+        byte[] buffer = new byte[10000];
 
         try {
             /* Read mic data continuously */
             while (true) {
                 /* If enough data then calculate RMS */
                 if (line.read(buffer, 0, buffer.length) > 0) {
-                    audioLevel = calculateRMS(buffer);
+                    int rmsLevel = calculateRMS(buffer);
+                    /* Make audio level far more noticeable for louder sounds */
+                    audioLevel = (int) Math.floor(Math.pow(rmsLevel, 5) / 6300000);
                 }
+                buffer = new byte[6000];
             }
         } catch (Exception e) {
             System.err.println(e.getMessage());
