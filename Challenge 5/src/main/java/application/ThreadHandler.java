@@ -28,7 +28,7 @@ public class ThreadHandler extends Thread {
     private HashMap<String, Integer> variableMap = new HashMap<>();
     private int cycle = 0;
     private final int midpoint;
-    private double amplifier = 2.5;
+    private double amplifier = 2;
     private HashMap<String, Integer> subCycles = new HashMap<>(Map.of(
             "R", 0,
             "r", 0,
@@ -88,30 +88,31 @@ public class ThreadHandler extends Thread {
 
     /* Determines which value(s) should be manipulated */
     private void handleCycle() {
-        switch (cycle) {
-            case 0 -> {handleCycleVariable("R");}
-            case 1 -> {handleCycleVariable("r");}
-            case 2 -> {handleCycleVariable("O");}
-            case 3 -> {
-                handleCycleVariable("R");
-                handleCycleVariable("r");
-            }
-            case 4 -> {
-                handleCycleVariable("R");
-                handleCycleVariable("r");
-                handleCycleVariable("O");
-            }
-            default -> {
-                /* Collects audio data, 0 is quietest */
-                float audioLevel = audioHandler.captureAudio();
+        if (cycle == 0) {
+            handleCycleVariable("R");
+        } else if (cycle == 1) {
+            handleCycleVariable("r");
+        } else if (cycle == 2) {
+            handleCycleVariable("O");
+        } else if (cycle == 3) {
+            handleCycleVariable("R");
+            handleCycleVariable("r");
+        } else if (cycle == 4) {
+            handleCycleVariable("R");
+            handleCycleVariable("r");
+            handleCycleVariable("O");
+        } else {
+            /* Collects audio data, 0 is quietest */
+            int audioLevel = audioHandler.getAudioLevel();
 
-                /* Calculate new values */
-                int RValue = (int) Math.max(0, Math.floor(config.get("maxR") - (audioLevel * amplifier)));
+            /* Calculate new values */
+            int RValue = (int) Math.floor(config.get("maxR") - (audioLevel * amplifier));
+            //int rValue = (int) Math.floor(config.get("minr") + (audioLevel * amplifier));
 
-                /* Set values */
-                variableMap.replace("R", RValue);
-                handleCycleVariable("O");
-            }
+            /* Set values */
+            variableMap.replace("R", RValue);
+            handleCycleVariable("r");
+            handleCycleVariable("O");
         }
     }
 
@@ -164,17 +165,12 @@ public class ThreadHandler extends Thread {
         while (true) {
             redraw();
 
-            int sleepTime = 50;
-            if (cycle == 5) {
-                sleepTime = 25;
-            }
-
             try {
-                Thread.sleep(sleepTime);
+                Thread.sleep(50);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
-
             }
+
             handleCycle();
             updateLabels();
 

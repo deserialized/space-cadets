@@ -17,6 +17,7 @@ import javax.sound.sampled.*;
 */
 
 public class AudioHandler {
+    private AudioThreadHandler audioThreadHandler;
     private TargetDataLine line;
     private AudioFormat format;
     private DataLine.Info info;
@@ -38,50 +39,14 @@ public class AudioHandler {
         } catch (LineUnavailableException e) {
             throw new RuntimeException(e);
         }
+
+        /* Creates new audio listening thread */
+        audioThreadHandler = new AudioThreadHandler(line);
+        new Thread(audioThreadHandler).start();
     }
 
-    public int captureAudio() {
-        line.start();
-        return record();
-    }
-
-    private int record() {
-        /* Buffer for raw audio data */
-        byte[] buffer = new byte[600];
-
-        try {
-            /* Read mic data continuously */
-            while (true) {
-                /* If enough data then calculate RMS */
-                if (line.read(buffer, 0, buffer.length) > 0) {
-                    int audioLevel = calculateRMS(buffer);
-                    line.stop();
-                    return audioLevel;
-                }
-            }
-        } catch (Exception e) {
-            return -1;
-            // System.err.println(e.getMessage());
-        }
-
-        // return -1;
-    }
-
-    /* Formula for this found online: calculates the root-mean-square value for the audio data */
-    private int calculateRMS(byte[] data) {
-        long sum = 0;
-        for(int i = 0; i < data.length; i++) {
-            sum += data[i];
-        }
-
-        double dAvg = sum / data.length;
-
-        double sumMeanSquare = 0d;
-        for (byte datum : data) {
-            sumMeanSquare = sumMeanSquare + Math.pow(datum - dAvg, 2d);
-        }
-
-        double averageMeanSquare = sumMeanSquare / data.length;
-        return (int)(Math.pow(averageMeanSquare, 0.5d) + 0.5);
+    /* Gets the current audio level */
+    public int getAudioLevel() {
+        return audioThreadHandler.getAudioLevel();
     }
 }
