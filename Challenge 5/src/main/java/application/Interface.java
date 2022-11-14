@@ -116,9 +116,4 @@ public class Interface {
         newThread = new ThreadHandler(g, (windowX / 2), labelMap, config.get("R"), config.get("r"), config.get("O"));
         new Thread(newThread).start();
     }
-
-    /* Fetches the graphic context */
-    public GraphicsContext getContext() {
-        return this.g;
-    }
 }
