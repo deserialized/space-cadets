@@ -19,6 +19,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -48,6 +49,11 @@ public class SpirographApplication extends Application {
 
     @Override
     public void start(Stage stage) {
+        /* Adjust size config */
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        config.replace("windowX", screenSize.height - 200);
+        config.replace("windowY", screenSize.height - 100);
+
         /* Sets up the interface scene */
         setupScene(stage);
     }
